@@ -1,11 +1,20 @@
-import React from 'react'
+import React from "react";
+import { useState } from "react";
+import Navbar from "./components/Navbar.jsx";
 
 const App = () => {
+  const [isDark, setIsDark] = useState(true);
+  const toggleTheme = () => {
+    setIsDark(!isDark);
+  };
   return (
-      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <h1 className=" text-4xl font-bold text-white">DevBoard</h1>
-      </div>
-  )
-}
-export default App
-
+    <div
+      className={`min-h-screen transition-colors duration-300 ${
+        isDark ? "bg-gray-900" : "bg-gray-50"
+      }`}
+    >
+      <Navbar isDark={isDark} toggleTheme={toggleTheme} />
+    </div>
+  );
+};
+export default App;
